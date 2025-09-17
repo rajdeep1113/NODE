@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About - Rajdeep Barad</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-black text-blue-100 flex flex-col min-h-screen font-sans">
+
+  <!-- Navbar -->
+  <nav class="flex items-center justify-between px-6 py-3 shadow-lg bg-black text-white">
+    <div class="text-xl font-bold">Rajdeep Barad</div>
+    <div class="hidden md:flex space-x-8 text-lg">
+      <a href="/" class="hover:text-blue-400 transition">Home</a>
+      <a href="/about" class="hover:text-blue-400 transition">About</a>
+      <a href="/contact" class="hover:text-blue-400 transition">Contact</a>
+    </div>
+    <div class="md:hidden">
+      <button id="menu-toggle-about" class="text-2xl">☰</button>
+    </div>
+  </nav>
+  <div id="mobile-menu-about" class="hidden flex-col bg-gray-900 text-white text-center p-4 space-y-3 md:hidden">
+    <a href="/" class="block hover:text-blue-400">Home</a>
+    <a href="/about" class="block hover:text-blue-400">About</a>
+    <a href="/contact" class="block hover:text-blue-400">Contact</a>
+  </div>
+
+  <!-- Main -->
+  <main class="flex-1 flex flex-col justify-center items-center px-6">
+    <div class="max-w-xl bg-gray-900 rounded-lg shadow-lg p-6 text-center">
+      <h1 class="text-4xl font-bold mb-4 text-white">About Me</h1>
+      <p class="text-lg text-blue-200 leading-relaxed mb-6">
+        Hi, I’m Rajdeep Barad, a web developer passionate about building modern and responsive websites.  
+        I focus on creating clean designs with strong attention to detail.
+      </p>
+      <a href="/" class="inline-block bg-gray-800 text-white px-6 py-3 rounded-lg shadow-md hover:bg-gray-700 transition">Back to Home</a>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-black text-white text-center p-4 mt-auto shadow-lg">
+    <p>© 2025 Rajdeep Barad | Personal Website</p>
+  </footer>
+
+  <script>
+    document.getElementById("menu-toggle-about").addEventListener("click", () => {
+      document.getElementById("mobile-menu-about").classList.toggle("hidden");
+    });
+  </script>
+</body>
+</html>
