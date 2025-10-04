@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>home page</h1>
+     <table border="">
+      <form action="/product" method="post">
+        <tr>
+          <td>Product Name:</td>
+          <td><input type="text" name="productName" /></td>
+        </tr>
+        <tr>
+          <td>Category</td>
+          <td><input type="text" name="category" /></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><button>Submit</button></td>
+        </tr>
+      </form>
+    </table>
+
+    <br />
+    <br />
+    <br />
+    <table border="">
+      <thead>
+        <tr>
+          <th>Product Name</th>
+          <th>Category</th>
+        </tr>
+      </thead>
+      <% productData.map((element)=>{ %>
+
+      <tr>
+        <td><%= element.productName %></td>
+        <td><%= element.category %></td>
+      </tr>
+
+      <% })%>
+    </table>
+</body>
+</html>

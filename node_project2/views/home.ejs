@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>To-Do List</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 min-h-screen p-6">
+    <h1 class="text-5xl font-extrabold mb-10 text-center text-white drop-shadow-lg"> To-Do List</h1>
+
+
+    <div class="max-w-xl mx-auto bg-white/80 backdrop-blur-md p-6 rounded-2xl shadow-xl border border-white/40">
+        <form action="/add" method="post" class="space-y-6">
+            <div>
+                <label for="productName" class="block text-gray-800 font-bold mb-2">Product Name:</label>
+                <input type="text" id="productName" name="productName" placeholder="Enter your product name"
+                    class="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-4 focus:ring-purple-400" />
+            </div>
+
+            <div>
+                <label for="productPrice" class="block text-gray-800 font-bold mb-2">Product Price:</label>
+                <input type="text" id="productPrice" name="productPrice" placeholder="Enter your product price"
+                    class="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-4 focus:ring-purple-400" />
+            </div>
+
+            <div>
+                <label for="productImg" class="block text-gray-800 font-bold mb-2">Product Image URL:</label>
+                <input type="text" id="productImg" name="productImg" placeholder="Enter your product image URL"
+                    class="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-4 focus:ring-purple-400" />
+            </div>
+
+            <div>
+                <label for="category" class="block text-gray-800 font-bold mb-2">Category:</label>
+                <select id="category" name="category"
+                    class="w-full border border-gray-300 rounded-lg p-3 bg-white focus:outline-none focus:ring-4 focus:ring-purple-400">
+                    <option value="">All Product</option>
+                    <option value="sports">Sports</option>
+                    <option value="cloth">Clothes</option>
+                    <option value="electronics">Electronics & Gadgets</option>
+                    <option value="beauty">Beauty & Personal Care</option>
+                    <option value="books">Books & Stationery</option>
+                </select>
+            </div>
+
+            <div class="text-right">
+                <button type="submit"
+                    class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-8 py-3 rounded-lg font-bold shadow-lg hover:scale-105 transition transform duration-300">
+                    Add Product</button>
+            </div>
+        </form>
+    </div>
+
+
+    <div class="max-w-7xl  mx-auto mt-14 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
+        <% array.map((item, index)=> { %>
+            <div
+                class="group bg-white rounded-2xl shadow-lg overflow-hidden flex flex-col transform hover:scale-105 hover:shadow-2xl transition-all duration-300">
+
+                <!-- Image Container -->
+                <div class="w-full aspect-[4/3] bg-gray-100 flex items-center justify-center">
+                    <img src="<%= item.productImg %>" alt="productImage" class="max-h-full max-w-full object-contain" />
+                </div>
+
+
+
+
+                <div class="p-5 flex flex-col flex-grow">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-2">
+                        <%= item.productName %>
+                    </h2>
+                    <p class="text-purple-600 text-lg font-semibold mb-1">$<%= item.productPrice %>
+                    </p>
+                    <p class="text-gray-500 mb-4 capitalize">
+                        <%= item.category || 'Uncategorized' %>
+                    </p>
+
+                    <!-- Buttons: keep space, just hide visually -->
+                    <div class="mt-auto flex space-x-3 transition-all duration-300 opacity-0 group-hover:opacity-100">
+                        <a href="/edit/<%= index %>"
+                            class="flex-1 text-center bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-2 rounded-lg transition">
+                            Edit</a>
+                        <a href="/delete/<%= index %>"
+                            class="flex-1 text-center bg-red-500 hover:bg-red-600 text-white font-bold py-2 rounded-lg transition">
+                            Delete</a>
+                    </div>
+                </div>
+            </div>
+            <% }) %>
+    </div>
+
+</body>
+
+</html>
