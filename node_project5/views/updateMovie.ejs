@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Edit Movie</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 min-h-screen flex items-center justify-center p-6">
+  <div class="w-full max-w-3xl bg-white shadow-2xl rounded-2xl border border-gray-200 p-8">
+    <h1 class="text-3xl font-bold text-indigo-700 text-center mb-6">🎬 Update Movie Details</h1>
+
+    <form action="/update" method="post" enctype="multipart/form-data" class="space-y-6">
+      <input type="hidden" value="<%= editData.id %>" name="id" />
+       
+      <!-- Movie Title -->
+      <div>
+        <label class="block text-gray-700 font-medium mb-2">Movie Name</label>
+        <input type="text" name="title" value="<%= editData.title %>"
+          class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-indigo-500" required />
+      </div>
+
+      <!-- Director -->
+      <div>
+        <label class="block text-gray-700 font-medium mb-2">Director Name</label>
+        <input type="text" name="director" value="<%= editData.director %>"
+          class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-indigo-500" required />
+      </div>
+
+      <!-- Release Year & Rating -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <label class="block text-gray-700 font-medium mb-2">Release Year</label>
+          <input type="text" name="releaseYear" value="<%= editData.releaseYear %>"
+            class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-indigo-500" required />
+        </div>
+
+        <div>
+          <label class="block text-gray-700 font-medium mb-2">Rating</label>
+          <input type="text" name="rating" value="<%= editData.rating %>"
+            class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-indigo-500" required />
+        </div>
+      </div>
+
+      <!-- Movie Image -->
+      <div>
+        <label class="block text-gray-700 font-medium mb-2">Movie Image</label>
+        <div class="flex items-center gap-4">
+          <input type="file" name="movieImg"
+            class="border border-gray-300 rounded-lg px-4 py-2 bg-gray-50 cursor-pointer focus:ring-2 focus:ring-indigo-500" />
+          <img src="<%= editData.movieImg %>" alt="Movie Image" class="w-24 h-24 object-cover rounded-lg shadow-md border">
+        </div>
+      </div>
+
+      <!-- Duration -->
+      <div>
+        <label class="block text-gray-700 font-medium mb-2">Movie Duration</label>
+        <input type="text" name="duration" value="<%= editData.duration %>"
+          class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-indigo-500" required />
+      </div>
+
+      <!-- Description -->
+      <div>
+        <label class="block text-gray-700 font-medium mb-2">Description</label>
+        <textarea name="description"
+          class="w-full border border-gray-300 rounded-lg px-4 py-2 h-24 focus:ring-2 focus:ring-indigo-500"><%= editData.description %></textarea>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="text-center">
+        <button type="submit"
+          class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-8 py-2 rounded-lg shadow-lg transition-all duration-300">
+          💾 Update Movie
+        </button>
+        <a href="/" class="ml-3">
+          <button type="button"
+            class="bg-gray-400 hover:bg-gray-500 text-white font-semibold px-8 py-2 rounded-lg shadow-lg transition-all duration-300">
+            🔙 Back
+          </button>
+        </a>
+      </div>
+    </form>
+  </div>
+</body>
+
+</html>
