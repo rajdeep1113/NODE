@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Categories - MyBlog</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        /* fade-up */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(32px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-up {
+            opacity: 0;
+            transform: translateY(32px);
+        }
+
+        .fade-up.show {
+            opacity: 1;
+            transform: translateY(0);
+            animation: fadeUp 0.8s ease-out forwards;
+        }
+
+        /* subtle image overlay */
+        .card-img {
+            position: relative;
+        }
+
+        .card-img::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0.18) 100%);
+            pointer-events: none;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 text-gray-800">
+
+    <nav class="bg-white shadow-md fixed w-full top-0 left-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="#" class="text-2xl font-bold text-indigo-600 tracking-wide hover:text-indigo-700">
+                    MyBlog
+                </a>
+
+                <button id="menu-btn" class="block md:hidden focus:outline-none">
+                    <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+
+                <div id="menu" class="hidden md:flex space-x-8 items-center">
+                    <a href="/home" class="text-gray-700 hover:text-indigo-600 font-medium">Home</a>
+                    <a href="/blogs" class="text-gray-700 hover:text-indigo-600 font-medium">Blogs</a>
+                    <a href="/about" class="text-gray-700 hover:text-indigo-600 font-medium">About</a>
+                    <a href="/categories" class="text-gray-700 hover:text-indigo-600 font-medium">Categories</a>
+                    <a href="/contact" class="text-gray-700 hover:text-indigo-600 font-medium">Contact</a>
+                    <a href="/logout"
+                        class="px-4 py-1 border border-indigo-600 text-indigo-600 rounded-lg hover:bg-indigo-50 transition">Logout</a>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="md:hidden hidden bg-white shadow-inner">
+            <a href="/home" class="block px-4 py-2 text-gray-700 hover:bg-indigo-50">Home</a>
+            <a href="/blogs" class="block px-4 py-2 text-gray-700 hover:bg-indigo-50">Blogs</a>
+            <a href="/about" class="block px-4 py-2 text-gray-700 hover:bg-indigo-50">About</a>
+            <a href="/categories" class="block px-4 py-2 text-gray-700 hover:bg-indigo-50">Categories</a>
+            <a href="/contact" class="block px-4 py-2 text-gray-700 hover:bg-indigo-50">Contact</a>
+            <div class="border-t my-2"></div>
+            <a href="/logout" class="block px-4 py-2 text-indigo-600 hover:bg-indigo-50">Logout</a>
+
+        </div>
+    </nav>
+
+
+    <script>
+        const btn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        btn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+    </script>
+
+ 
+    <header class="pt-28 pb-12 text-center px-6 fade-up">
+        <h1 class="text-4xl md:text-5xl font-extrabold text-amber-700 mb-3">Explore Categories</h1>
+        <p class="max-w-3xl mx-auto text-gray-700 text-lg">Hand-picked categories to help you find what you love — UX,
+            travel, food, productivity, and more.</p>
+    </header>
+
+    <section class="max-w-7xl mx-auto px-6 mb-12">
+        <div class="grid md:grid-cols-2 gap-8 items-center">
+            <div class="bg-white rounded-3xl shadow-lg overflow-hidden fade-up">
+                <div class="relative h-72 card-img">
+                    <img src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?auto=format&fit=crop&w=1600&q=80"
+                        alt="Spotlight - Storytelling"
+                        class="w-full h-full object-cover transition-transform duration-700 hover:scale-105">
+                </div>
+                <div class="p-6">
+                    <h2 class="text-2xl font-bold text-amber-700 mb-2">Spotlight: Storytelling</h2>
+                    <p class="text-gray-600 mb-4">Dive into powerful narratives and long-form essays that connect ideas
+                        and people.
+                        Featured collection — editor's picks and must-reads.</p>
+                    <a href="#"
+                        class="inline-block px-5 py-2 bg-amber-600 text-white rounded-lg hover:bg-amber-700 transition shadow">View
+                        Collection</a>
+                </div>
+            </div>
+
+            <div class="space-y-6">
+                <div class="bg-white rounded-3xl shadow-lg p-6 fade-up">
+                    <h3 class="text-xl font-semibold text-amber-700 mb-2">Why categories matter</h3>
+                    <p class="text-gray-600">Organized content helps readers find value quickly — explore curated topics
+                        and deep
+                        dives designed to spark curiosity.</p>
+                </div>
+
+                <div class="grid sm:grid-cols-2 gap-6">
+                    <div class="bg-white rounded-2xl shadow-md p-5 fade-up hover:scale-[1.02] transition-transform">
+                        <h4 class="font-semibold text-amber-700">Editor’s Picks</h4>
+                        <p class="text-sm text-gray-600 mt-2">Top articles chosen by our editorial team.</p>
+                    </div>
+                    <div class="bg-white rounded-2xl shadow-md p-5 fade-up hover:scale-[1.02] transition-transform">
+                        <h4 class="font-semibold text-amber-700">Trending Now</h4>
+                        <p class="text-sm text-gray-600 mt-2">Hot topics and popular reads this week.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="max-w-7xl mx-auto px-6 pb-12">
+        <h2 class="text-2xl font-bold text-amber-700 mb-6 fade-up">All Categories</h2>
+
+        <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        
+            <article
+                class="fade-up bg-white rounded-2xl overflow-hidden shadow-md hover:-translate-y-2 transition-all duration-400">
+                <div class="relative h-52 card-img">
+                    <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1400&q=80"
+                        alt="Technology"
+                        class="w-full h-full object-cover transition-transform duration-700 hover:scale-105">
+                </div>
+                <div class="p-5">
+                    <h3 class="text-xl font-semibold text-amber-700">Technology</h3>
+                    <p class="text-gray-600 mt-2 text-sm">Gadgets, AI, dev tips and the future of tech.</p>
+                    <div class="mt-4 flex items-center justify-between">
+                        <a href="#" class="text-amber-700 font-medium hover:underline">Explore →</a>
+                        <span class="text-sm text-gray-500">120 articles</span>
+                    </div>
+                </div>
+            </article>
+
+
+            <article
+                class="fade-up bg-white rounded-2xl overflow-hidden shadow-md hover:-translate-y-2 transition-all duration-400">
+                <div class="relative h-52 card-img">
+                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1400&q=80"
+                        alt="Travel"
+                        class="w-full h-full object-cover transition-transform duration-700 hover:scale-105">
+                </div>
+                <div class="p-5">
+                    <h3 class="text-xl font-semibold text-amber-700">Travel</h3>
+                    <p class="text-gray-600 mt-2 text-sm">Guides, hidden gems and travel storytelling.</p>
+                    <div class="mt-4 flex items-center justify-between">
+                        <a href="#" class="text-amber-700 font-medium hover:underline">Explore →</a>
+                        <span class="text-sm text-gray-500">84 articles</span>
+                    </div>
+                </div>
+            </article>
+
+            <article
+                class="fade-up bg-white rounded-2xl overflow-hidden shadow-md hover:-translate-y-2 transition-all duration-400">
+                <div class="relative h-52 card-img">
+                    <img src="https://images.unsplash.com/photo-1504198453319-5ce911bafcde?auto=format&fit=crop&w=1400&q=80"
+                        alt="Lifestyle"
+                        class="w-full h-full object-cover transition-transform duration-700 hover:scale-105">
+                </div>
+                <div class="p-5">
+                    <h3 class="text-xl font-semibold text-amber-700">Lifestyle</h3>
+                    <p class="text-gray-600 mt-2 text-sm">Wellness, routines, habits and mindful living.</p>
+                    <div class="mt-4 flex items-center justify-between">
+                        <a href="#" class="text-amber-700 font-medium hover:underline">Explore →</a>
+                        <span class="text-sm text-gray-500">67 articles</span>
+                    </div>
+                </div>
+            </article>
+
+            <article
+                class="fade-up bg-white rounded-2xl overflow-hidden shadow-md hover:-translate-y-2 transition-all duration-400">
+                <div class="relative h-52 card-img">
+                    <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1400&q=80"
+                        alt="Food" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105">
+                </div>
+                <div class="p-5">
+                    <h3 class="text-xl font-semibold text-amber-700">Food</h3>
+                    <p class="text-gray-600 mt-2 text-sm">Recipes, culinary journeys and kitchen inspiration.</p>
+                    <div class="mt-4 flex items-center justify-between">
+                        <a href="#" class="text-amber-700 font-medium hover:underline">Explore →</a>
+                        <span class="text-sm text-gray-500">45 articles</span>
+                    </div>
+                </div>
+            </article>
+
+ 
+            <article
+                class="fade-up bg-white rounded-2xl overflow-hidden shadow-md hover:-translate-y-2 transition-all duration-400">
+                <div class="relative h-52 card-img">
+                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1400&q=80"
+                        alt="Design"
+                        class="w-full h-full object-cover transition-transform duration-700 hover:scale-105">
+                </div>
+                <div class="p-5">
+                    <h3 class="text-xl font-semibold text-amber-700">Design</h3>
+                    <p class="text-gray-600 mt-2 text-sm">UI/UX, visual craft and creative process articles.</p>
+                    <div class="mt-4 flex items-center justify-between">
+                        <a href="#" class="text-amber-700 font-medium hover:underline">Explore →</a>
+                        <span class="text-sm text-gray-500">52 articles</span>
+                    </div>
+                </div>
+            </article>
+
+    
+            <article
+                class="fade-up bg-white rounded-2xl overflow-hidden shadow-md hover:-translate-y-2 transition-all duration-400">
+                <div class="relative h-52 card-img">
+                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1400&q=80"
+                        alt="Education"
+                        class="w-full h-full object-cover transition-transform duration-700 hover:scale-105">
+                </div>
+                <div class="p-5">
+                    <h3 class="text-xl font-semibold text-amber-700">Education</h3>
+                    <p class="text-gray-600 mt-2 text-sm">Tutorials, study guides and learning resources.</p>
+                    <div class="mt-4 flex items-center justify-between">
+                        <a href="#" class="text-amber-700 font-medium hover:underline">Explore →</a>
+                        <span class="text-sm text-gray-500">38 articles</span>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <section class="max-w-7xl mx-auto px-6 pb-12 fade-up">
+        <h3 class="text-xl font-semibold text-gray-800 mb-4">Popular tags</h3>
+        <div class="flex flex-wrap gap-3">
+            <a href="#"
+                class="px-4 py-2 bg-white rounded-full shadow-sm text-sm text-amber-700 hover:shadow-md transition">productivity</a>
+            <a href="#"
+                class="px-4 py-2 bg-white rounded-full shadow-sm text-sm text-amber-700 hover:shadow-md transition">travel</a>
+            <a href="#"
+                class="px-4 py-2 bg-white rounded-full shadow-sm text-sm text-amber-700 hover:shadow-md transition">remote-work</a>
+            <a href="#"
+                class="px-4 py-2 bg-white rounded-full shadow-sm text-sm text-amber-700 hover:shadow-md transition">ui-ux</a>
+            <a href="#"
+                class="px-4 py-2 bg-white rounded-full shadow-sm text-sm text-amber-700 hover:shadow-md transition">wellness</a>
+            <a href="#"
+                class="px-4 py-2 bg-white rounded-full shadow-sm text-sm text-amber-700 hover:shadow-md transition">javascript</a>
+        </div>
+    </section>
+
+
+    <section class="max-w-5xl mx-auto px-6 pb-20">
+        <div class="bg-gradient-to-r from-amber-600 to-orange-500 text-white rounded-3xl p-8 shadow-lg fade-up">
+            <div class="flex flex-col md:flex-row items-center gap-6">
+                <div class="flex-1">
+                    <h4 class="text-2xl font-bold">Stay Updated</h4>
+                    <p class="mt-2 text-amber-100">Subscribe to our newsletter for weekly highlights and exclusive
+                        content.</p>
+                </div>
+                <form class="flex-1 flex gap-3 max-w-xl">
+                    <input type="email" required placeholder="Enter your email"
+                        class="flex-1 px-4 py-2 rounded-lg text-gray-800 focus:outline-none" />
+                    <button type="submit"
+                        class="px-5 py-2 bg-white text-amber-600 font-semibold rounded-lg hover:brightness-90 transition">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-white border-t py-8 text-center">
+        <div class="max-w-7xl mx-auto px-6">
+            <p class="text-gray-600">© 2025 MyBlog — Explore, Learn, and Inspire ✨</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const items = document.querySelectorAll('.fade-up');
+            const obs = new IntersectionObserver((entries) => {
+                entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
+            }, { threshold: 0.15 });
+            items.forEach(i => obs.observe(i));
+        });
+    </script>
+</body>
+
+</html>
